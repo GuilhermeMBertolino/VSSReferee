@@ -483,12 +483,10 @@ Position Replacer::getBallPlaceByFoul(VSSRef::Foul foul, VSSRef::Color color, VS
         case VSSRef::Foul::GOAL_KICK:{
         float stretch = getField()->defenseStretch()/2000.0 + getConstants()->ballRadius();
             if(color == VSSRef::Color::BLUE){
-                if(getConstants()->blueIsLeftSide()) return Position(true, -goalKickX, ((_isGoaliePlacedAtTop) ? (stretch - getConstants()->ballRadius()) : (-stretch + getConstants()->ballRadius())));
-                else return Position(true, goalKickX, ((_isGoaliePlacedAtTop) ? (stretch - getConstants()->ballRadius()) : (-stretch + getConstants()->ballRadius())));
+                return Position(true, -goalKickX, 0.0);
             }
             else if(color == VSSRef::Color::YELLOW){
-                if(getConstants()->blueIsLeftSide()) return Position(true, goalKickX, ((_isGoaliePlacedAtTop) ? (stretch - getConstants()->ballRadius()) : (-stretch + getConstants()->ballRadius())));
-                else return Position(true, -goalKickX, ((_isGoaliePlacedAtTop) ? (stretch - getConstants()->ballRadius()) : (-stretch + getConstants()->ballRadius())));
+                return Position(true, goalKickX, 0.0);
             }
         }
         break;
